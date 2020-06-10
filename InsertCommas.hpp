@@ -1,9 +1,9 @@
 /************************************************************************************
- * ListQueue.hpp
+ * InsertCommas.hpp
  * 
  * What it is:      Creates a linked list queue
  *                  that holds chars. This is 
- *                  intended to hold strings of numbers
+ *                  intended to hold numbers
  *                  then insert commas in the correct 
  *                  positions for currency in North
  *                  America
@@ -63,14 +63,17 @@ class ListQueue{
 
         void push(char x){
             if (!front){
-                                                //cout << "Front Created";
+                                                //cout << "Front Created\n";
+                                                
                 rear = front = new Node(x);
                 size = rear->position = 1;
-            }else{
+                                                //cout <<"Node "<< front->data << " created" << endl;
+            }else if (x == '.'){}
+            else{
                 
                 Node* temp = rear;
                 rear->next = new Node(x);
-                                                //cout << "Node " << size << " created\n";
+                                                //cout << "Node " << rear->next->data << " created\n";                                 
                 rear = rear->next;
                 rear->prev = temp;
                 size++;
@@ -81,19 +84,50 @@ class ListQueue{
         void print(){
             
             Node* current = front;
-            while(current != nullptr){
+            cout << "$";
+            while(current->next->next != nullptr){
                                                 //cout << " position is: " << current->position << endl;
                 cout << current->data;
-                if((current->position-1) % 3 == 0 && current->next->next->next != nullptr && current->next->data != '.'){
-                    cout << ",";
-                }
+                addCommas(current);
                 current = current->next;
 
             }
             //cout << endl << "Size is: " << size;
         };
-};
 
+        void addCommas(Node* current){
+            //if its bigger than 5 digits (including cents but not commas or decimal) it will need a comma
+            if(size >= 6){
+                //cout << "\nin Add Commas\n";
+                if (getSize() % 3 == 0){
+                    if((current->position - 1) % 3 == 0  && current->next->next->next != nullptr){
+                        cout << ",";
+                    }                    
+                }else if((getSize() - 1) % 3 == 0){
+                    if((current->position - 2) % 3 == 0  && current->next->next->next != nullptr){
+                        cout << ",";
+                    } 
+
+                }else if((getSize() - 2) % 3 == 0){
+                    if((current->position - 3) % 3 == 0  && current->next->next->next != nullptr){
+                        cout << ",";
+                    }
+                }else{
+                    cout << "error code %3210\n";
+                }
+            }if(current->next->next->next == nullptr){
+                cout<<"."<<current->next->data << current ->next->next->data;
+            };
+        }
+
+        int getSize(){
+            return size;
+        }
+
+
+
+};
+    
 
 //          For Testing Use
 // int main(){
