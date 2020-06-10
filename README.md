@@ -1,4 +1,4 @@
-# PrintingCurrencyVals
+# Day Trader Profit Calculator
 
 ## The Basics
 Calculates the amount of money you will have
