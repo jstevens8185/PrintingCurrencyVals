@@ -61,6 +61,15 @@ class ListQueue{
             size = 0;
         }
 
+/********************************************************************
+ * function:        push()
+ * 
+ * Params:          char x
+ * 
+ * Whats it do?     pushes one char at a time into
+ *                  a list queue. Excludes periods ('.')
+ ********************************************************************/
+
         void push(char x){
             if (!front){
                                                 //cout << "Front Created\n";
@@ -81,8 +90,16 @@ class ListQueue{
             }
         }
 
-        void print(){
-            
+/********************************************************************
+ * function:        print()
+ * 
+ * Params:          none
+ *
+ * Whats it do?     prints contents of list in US currency
+ *                  format with commas in correct places
+ *                  and a decimal for cents.
+ ********************************************************************/
+        void print(){ 
             Node* current = front;
             cout << "$";
             while(current->next->next != nullptr){
@@ -90,15 +107,23 @@ class ListQueue{
                 cout << current->data;
                 addCommas(current);
                 current = current->next;
-
             }
             //cout << endl << "Size is: " << size;
         };
 
+/********************************************************************
+ * function:        addCommas(Node*)
+ * 
+ * Params:          Node* current
+ * 
+ * Whats it do?     Adds commas to a number to be printed
+ *                  in the correct US currency format
+ ********************************************************************/
+
         void addCommas(Node* current){
             //if its bigger than 5 digits (including cents but not commas or decimal) it will need a comma
             if(size >= 6){
-                //cout << "\nin Add Commas\n";
+                //cout << "\nin Add Commas()\n";
                 if (getSize() % 3 == 0){
                     if((current->position - 1) % 3 == 0  && current->next->next->next != nullptr){
                         cout << ",";
@@ -106,8 +131,7 @@ class ListQueue{
                 }else if((getSize() - 1) % 3 == 0){
                     if((current->position - 2) % 3 == 0  && current->next->next->next != nullptr){
                         cout << ",";
-                    } 
-
+                    }
                 }else if((getSize() - 2) % 3 == 0){
                     if((current->position - 3) % 3 == 0  && current->next->next->next != nullptr){
                         cout << ",";
@@ -119,6 +143,14 @@ class ListQueue{
                 cout<<"."<<current->next->data << current ->next->next->data;
             };
         }
+
+/********************************************************************
+ * function:        getSize()
+ * 
+ * Params:          none
+ * 
+ * Whats it do?     returns size
+ ********************************************************************/
 
         int getSize(){
             return size;

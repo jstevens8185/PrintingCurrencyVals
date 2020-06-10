@@ -22,31 +22,23 @@ int main(){
     ints.open("ints.txt");
     
                             //Get the variables and do something 
-    result = doTheMath(getStartingVal(), getYears(), daysToTrade, interest);
+    result = doTheMath(setStartingVal(), setYears(), daysToTrade, interest);
 
-            //For Testing
-            //result = doTheMath(startingVal, years, daysToTrade, interest);
+        //For Testing
+        //result = doTheMath(startingVal, years, daysToTrade, interest);
 
 
                             //Print the result as a dollar amount
     ints << fixed << showpoint << setprecision(2) << result; 
 
-    //Close outfile
+                            //Close outfile
     ints.close();
 
-    //  -Read contents from file into a list
+                             //  -Read contents from file into a list
     ListQueue list;
-    
     ifstream noCommas("ints.txt");   
-
-
-
-
-
-    //string x;                                                 //  <-
-    //noCommas >> x;                                            //Stops working around here
-    //cout << x;                                                //  <-
     char y;
+
     while(noCommas >> y){
         //cout << y;
         list.push(y);

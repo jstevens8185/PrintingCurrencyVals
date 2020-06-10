@@ -5,9 +5,21 @@
  *                  by compounding interest calculator.
  * 
  * Author:          Jered Stevens
+ * 
  * Date:            06/08/2020
  *******************************************************************/
 
+/********************************************************************
+ * function:        doTheMath(int, int, int, double)
+ * 
+ * Params:          int start, int years, int days, int interest
+ * 
+ * Whats it do?     Calculates interest for a given amount of years
+ *                  with interest being earned and compounded 
+ *                  each day such as in a stock trading account
+ * 
+ * returns:         double
+ ********************************************************************/
 double doTheMath(int start, int years, int days, double interest){
     double endVal = start;
 
@@ -20,7 +32,16 @@ double doTheMath(int start, int years, int days, double interest){
     return endVal;
 }
 
-int getYears(){
+/********************************************************************
+ * function:        setYears()
+ * 
+ * Params:          none
+ * 
+ * Whats it do?     gets number of years from user
+ * 
+ * returns:         int
+ ********************************************************************/
+int setYears(){
     int years;
     std::cout << "enter years\n";
     std::cin >> years;
@@ -28,7 +49,16 @@ int getYears(){
     return years;
 }
 
-int getStartingVal(){
+/********************************************************************
+ * function:        setStartingVal()
+ * 
+ * Params:          none
+ * 
+ * Whats it do?     gets starting value of the interest earning account
+ * 
+ * returns:         int
+ ********************************************************************/
+int setStartingVal(){
     int x;
     std::cout << "enter starting value\n";
     std::cin >> x;
@@ -36,3 +66,13 @@ int getStartingVal(){
     return x;
 }
 
+/********************************************************************
+ * function:        setInterest()
+ * 
+ * Params:          none
+ * 
+ * Whats it do?     gets interest to be earned by user
+ * 
+ * returns:         double
+ ********************************************************************/
+double setInterest()
