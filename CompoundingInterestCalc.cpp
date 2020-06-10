@@ -10,30 +10,34 @@ using namespace std;
 
 int main(){
     
-    // find interest 
+                            //Initialize stuff
     int startingVal = 1000;
     const double interest = 1.015;
     int daysToTrade = 150;
     int years = 1;
     float result;
 
+                            //Open file to print to
     ofstream ints;
     ints.open("ints.txt");
     
+                            //Get the variables and do something 
     result = doTheMath(getStartingVal(), getYears(), daysToTrade, interest);
 
             //For Testing
             //result = doTheMath(startingVal, years, daysToTrade, interest);
 
-    ints << fixed << showpoint << setprecision(2) << result;
+
+                            //Print the result as a dollar amount
+    ints << "$" << fixed << showpoint << setprecision(2) << result;
 
     //  -Read contents from file into a list
     ListQueue list;
     
     ifstream noCommasIn("ints.txt");   
-    string x;               //  <-
-    noCommasIn >> x;        //Stops working around here
-    cout << x;              //  <-
+    string x;                                                   //  <-
+    noCommasIn >> x;                                            //Stops working around here
+    cout << x;                                                  //  <-
     for (int i = 0; i<x.length(); i++){
         char y;
         y = x[i];

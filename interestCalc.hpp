@@ -1,4 +1,12 @@
-
+/*******************************************************************
+ * interestCalc.hpp
+ * 
+ * What is It?      Mathmatical functions to be called 
+ *                  by compounding interest calculator.
+ * 
+ * Author:          Jered Stevens
+ * Date:            06/08/2020
+ *******************************************************************/
 
 double doTheMath(int start, int years, int days, double interest){
     double endVal = start;
